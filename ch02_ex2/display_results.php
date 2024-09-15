@@ -28,8 +28,8 @@
     // validate years
     if ( $years === FALSE ) {
         $error_message .= 'Years must be a valid whole number.<br>';
-    } else if ( $years <= 0 ) {
-        $error_message .= 'Years must be greater than zero.<br>';
+    } else if ( $years >= 15 ) {
+        $error_message .= 'Years must be less than or equal to 15.<br>';
     } else if ( $years > 30 ) {
         $error_message .= 'Years must be less than 31.<br>';
     } 
@@ -49,6 +49,9 @@
     $investment_f = '$'.number_format($investment, 2);
     $yearly_rate_f = $interest_rate.'%';
     $future_value_f = '$'.number_format($future_value, 2);
+
+    //notes current date
+    $date = date('m/d/y');
 ?>
 <!DOCTYPE html>
 <html>
@@ -70,6 +73,9 @@
         <span><?php echo $years; ?></span><br>
 
         <label>Future Value:</label>
+        <span><?php echo $future_value_f; ?></span><br>
+
+        <label>Date of Calculation:</label>
         <span><?php echo $future_value_f; ?></span><br>
     </main>
 </body>
